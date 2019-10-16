@@ -1,0 +1,322 @@
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  opacity: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+body {
+  background: #000;
+  margin: 0;
+  font-family: sans-serif;
+}
+main {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+footer {
+  display: flex;
+  background: #222;
+  color: #FFF;
+  border-top: 2px solid #333;
+  align-items: stretch;
+}
+footer > span {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 16px;
+}
+footer > .button {
+  cursor: pointer;
+  user-select: none;
+}
+footer > .button:hover {
+  background: #333;
+}
+footer > .button.large {
+  font-size: 14pt;
+}
+footer > .spacer {
+  border: 1px solid #333;
+}
+#main {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  align-items: stretch;
+}
+#users {
+  color: #FFF;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #333;
+  overflow: hidden;
+  z-index: 2;
+}
+#userlist {
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+#users > .header {
+  font-size: 18pt;
+  border-bottom: 2px solid #333;
+  padding: 16px;
+}
+#userlist > .user > .name {
+  display: inline-block;
+  padding: 12px;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+}
+#userlist > .user > .name.you::after {
+  content: ' (YOU)';
+  opacity: 0.25;
+  font-size: 8pt;
+}
+#userlist > .user.queued.turn {
+  background: #34495e;
+}
+#userlist > .user.queued {
+  background: #444;
+}
+#userlist > .user > .name:hover {
+  background: #333;
+}
+#userlist > .user > .options {
+  background: #111;
+  display: none;
+}
+#userlist > .user > .options.open {
+  background: #111;
+  display: block;
+}
+#userlist > .user > .options > span {
+  display: block;
+  padding: 8px 24px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 10pt;
+}
+#userlist > .user > .options > span:hover {
+  background: #333;
+}
+#monitor {
+  position: relative;
+  flex-grow: 1;
+  z-index: 1;
+}
+#display {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#chat {
+  color: #FFF;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #333;
+  overflow: hidden;
+  z-index: 2;
+}
+#chat > .header {
+  font-size: 18pt;
+  border-bottom: 2px solid #333;
+  padding: 16px;
+}
+#messages {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1;
+  border-bottom: 2px solid #333;
+}
+#messages > .message {
+  padding: 8px;
+  border-bottom: 2px solid #333;
+}
+#messages > .message:last-child {
+  border-bottom: none;
+}
+#messages > .message > .time {
+  color: #777;
+  font-size: 10pt;
+}
+#messages > .message > .name {
+  margin-left: 4px;
+  color: #AAA;
+}
+#messages > .message > .content {
+  color: #FFF;
+  margin: 8px 0 0 0;
+  overflow-wrap: break-word;
+}
+#messages > .message > .content > a > .message-image {
+  max-width: 90%;
+  max-height: 128px;
+}
+#messages > .message > .content > a {
+  color: #3498db;
+}
+#chatbox {
+  align-self: stretch;
+  margin: 16px;
+  padding: 8px;
+  border: 2px solid #333;
+  background: #111;
+  color: #AAA;
+}
+#chatbox:focus {
+  outline: none;
+  border: 2px solid #555;
+}
+.hidden {
+  min-width: 0px;
+  max-width: 0px;
+}
+#users.shown {
+  min-width: 15vw;
+  max-width: 384px;
+}
+#chat.shown {
+  min-width: 20vw;
+  max-width: 384px;
+}
+#notifications {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column-reverse;
+  z-index: 10;
+  pointer-events: none;
+}
+#notifications > div {
+  display: flex;
+  flex-direction: column;
+  background: #333;
+  padding: 16px;
+  margin-top: 16px;
+  color: #777;
+  border-radius: 2px;
+  max-width: 384px;
+  min-width: 384px;
+  transition: opacity 1s;
+  overflow: hidden;
+  pointer-events: initial;
+}
+#notifications > div > .header {
+  margin-bottom: 8px;
+}
+#notifications > div > .header > span {
+  margin-left: 8px;
+}
+#notifications > div > .header > .close {
+  cursor: pointer;
+  float: right;
+}
+#notifications > .error {
+  background: #c0392b;
+  color: #ecf0f1;
+}
+#notifications > .warn {
+  background: #d35400;
+  color: #ecf0f1;
+}
+#notifications > .success {
+  background: #27ae60;
+  color: #ecf0f1;
+}
+#notifications > .info {
+  background: #34495e;
+  color: #ecf0f1;
+}
+#notifications > .debug {
+  background: #8e44ad;
+  color: #ecf0f1;
+}
+#alertarea {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+#alertarea > .prompt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #222;
+  color: #FFF;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 382px;
+}
+#alertarea > .prompt > .header {
+  margin-bottom: 8px;
+}
+#alertarea > .prompt > .header > h1 {
+  display: inline;
+  font-size: 18pt;
+  font-weight: normal;
+}
+#alertarea > .prompt > .header > .close {
+  float: right;
+  color: #777;
+  cursor: pointer;
+}
+#alertarea > .prompt > .message {
+  margin-bottom: 4px;
+  color: #AAA;
+}
+#alertarea > .prompt > .textinput {
+  margin: 8px 0px;
+  padding: 8px;
+  border: 2px solid #333;
+  background: #111;
+  color: #AAA;
+}
+#alertarea > .prompt > .textinput:focus {
+  outline: none;
+  border: 2px solid #555;
+}
+#alertarea > .prompt > .buttons {
+  align-self: flex-end;
+}
+#alertarea > .prompt > .buttons > button {
+  padding: 8px;
+  margin: 4px 16px;
+  border: 2px solid #333;
+  background: none;
+  color: #AAA;
+  cursor: pointer;
+  user-select: none;
+}
+#alertarea > .prompt > .buttons > button:last-child {
+  margin: 4px 0px;
+}
